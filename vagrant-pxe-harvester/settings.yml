@@ -130,7 +130,7 @@ harvester_node_config:
 # https://www.suse.com/suse-rancher/support-matrix/all-supported-versions
 #
 rancher_config:
-  enabled: false
+  enabled: true
 
   version: v2.9.3
   k3s_channel: v1.30
