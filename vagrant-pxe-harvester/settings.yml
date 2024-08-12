@@ -130,7 +130,7 @@ harvester_node_config:
 # Refer support matrix on https://ranchermanager.docs.rancher.com/versions
 # 
 rancher_config:
-  enabled: false
+  enabled: true
 
   version: v2.11.0
   k3s_channel: v1.32
