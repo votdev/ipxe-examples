@@ -145,7 +145,7 @@ harvester_node_config:
 # K3s Release: https://docs.k3s.io/release-notes/v1.28.X
 #
 rancher_config:
-  enabled: false
+  enabled: true
   version: v2.8.5
   repo: https://releases.rancher.com/server-charts/latest
 
