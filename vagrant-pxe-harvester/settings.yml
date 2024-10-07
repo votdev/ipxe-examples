@@ -84,12 +84,12 @@ harvester_network_config:
       role: default
     - ip: 192.168.0.32
       mac: 02:00:00:2F:F2:2A
-      cpu: 8
-      memory: 16384
-      disk_size: 500G
+      cpu: 4
+      memory: 4096
+      disk_size: 250G
       vagrant_interface: ens5
       mgmt_interface: ens6
-      role: default
+      role: witness
     - ip: 192.168.0.33
       mac: 02:00:00:A7:E6:FF
       cpu: 8
@@ -97,7 +97,7 @@ harvester_network_config:
       disk_size: 500G
       vagrant_interface: ens5
       mgmt_interface: ens6
-      role: default
+      role: witness
 
 #
 # harvester_config
