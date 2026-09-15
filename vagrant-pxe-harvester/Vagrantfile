@@ -29,8 +29,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   # PXE Server
   config.vm.define :pxe_server do |pxe_server|
+    # https://portal.cloud.hashicorp.com/vagrant/discover/generic/
     pxe_server.vm.box = 'generic/debian12'
-    pxe_server.vm.box_version = '4.3.12'
+    pxe_server_vm_box_version = '4.3.12'
+
+    # Vagrant < 2.3.0 does not handle multi-architecture metadata properly on Vagrant Cloud
+    # and erroneously selects the ppc64le libvirt box on x86_64 systems (e.g. on openSUSE Leap 15.6).
+    # Note: If an incorrect box was previously cached, remove it first:
+    #   vagrant box remove generic/debian12 --provider libvirt
+    if Gem::Version.new(Vagrant::VERSION) < Gem::Version.new('2.3.0')
+      # When using a direct .box URL, do not specify box_version, otherwise Vagrant
+      # aborts with a version constraint error (BoxAddDirectVersion).
+      pxe_server.vm.box_url = "https://vagrantcloud.com/generic/boxes/debian12/versions/#{pxe_server_vm_box_version}/providers/libvirt/amd64/vagrant.box"
+    else
+      pxe_server.vm.box_version = pxe_server_vm_box_version
+    end
 
     pxe_server.vm.hostname = 'pxe-server'
     pxe_server.vm.network 'private_network',
