@@ -173,5 +173,11 @@ s3:
   console_port: 9001
   username: admin
   password: password1234
-  # RELEASE.2025-09-07T16-13-09Z
-  tagged_release_sha256sum: sha256:a1a8bd4ac40ad7881a245bab97323e18f971e4d4cba2c2007ec1bedd21cbaba2
+  # Upstream MinIO no longer publishes images, so we use Chainguard's. Without
+  # a Chainguard account only the "latest" tag is publicly available, and older
+  # digests may be removed at any time, so neither a version tag nor a digest
+  # pin can be used by default.
+  # Any image reference is accepted, e.g. "<repository>:<tag>" or
+  # "<repository>@sha256:<digest>".
+  # https://images.chainguard.dev/directory/image/minio/versions
+  image: cgr.dev/chainguard/minio:latest

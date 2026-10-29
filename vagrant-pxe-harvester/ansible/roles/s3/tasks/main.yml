@@ -30,7 +30,7 @@
 - name: start minio container
   containers.podman.podman_container:
     name: minio
-    image: quay.io/minio/minio@{{ settings['s3']['tagged_release_sha256sum'] }}
+    image: "{{ settings['s3']['image'] }}"
     command:
       - server
       - /data
